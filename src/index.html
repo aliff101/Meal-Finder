@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal Finder</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <nav class="navbar"> 
+    <div class="logo"> 
+        <span>MEAL FINDER</span>
+    </div>
+      <ul class="nav-links"> 
+          <li><a href="grocery_list.html">Grocery List</a></li>
+      </ul>
+  </nav>
+  <h1> MEAL FINDER APPLICATION </h1>
+  <div class="flex-container">
+  <div class="container">
+    <!-- Input to filter by ingredient and category -->
+    <div class="search-section">
+      <div class="search-inputs-container">
+        <div class="search-group">
+          <label for="ingredient">Search By Ingredient:</label>
+          <input type="text" id="ingredient" placeholder="Enter ingredient">
+        </div>
+        
+        <div class="search-group">
+          <label for="category">Search By Category:</label>
+          <select id="category">
+            <option value="">Select a category</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Dessert">Dessert</option>
+          </select>
+        </div>
+      </div>
+      <button onclick="searchMeal()">Search</button>
+    </div>
+   
+    <!-- Section to display list of meals -->
+    <div id="mealList"></div>
+
+    <!-- Modal for displaying meal information -->
+    <div id="mealModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="mealInfo"></div>
+      </div>
+    </div>
+  </div>
+  <div class="ingredient"> 
+    <!-- Grocery List Section -->
+    <h2>My Shopping List</h2>
+    <div class="separator"></div>
+    <div class="grocery-section">
+      <form id="groceryForm">
+        <input type="text" id="mealName" placeholder="Enter meal name" required>
+        <div id="ingredientInputs">
+          <div class="ingredient-row">
+            <input type="text" class="groceryItem" placeholder="Add the ingredient" required>
+            <button type="button" class="remove-ingredient" onclick="removeIngredientInput(this)">-</button>
+          </div>
+        </div>
+        <button type="button" onclick="addIngredientInput()">Add Another Ingredient</button>
+        <button type="submit">Save ingredient list</button>
+      </form>
+      <ul id="groceryList"></ul>
+    </div>
+    <div class="separator"></div>
+  </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

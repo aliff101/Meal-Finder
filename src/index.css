@@ -1,0 +1,1057 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: ghostwhite;
+  color: #000000;
+  margin: 0;
+  text-align: center;
+  min-height: 100vh;
+}
+
+h1 {
+  color: #000000;
+  text-align: center;
+  font-size: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Flex container styling */
+.flex-container {
+  display: flex;
+  justify-content: center; /* Center both containers horizontally */
+  padding: 10px;
+}
+
+/* Container styling */
+.container {
+  width: 950px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  margin: 0 auto;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-5px);
+}
+
+.ingredient{
+  max-width: 600px; /* Increased maximum width */
+  background-color: rgb(255, 255, 255);
+  padding: 40px; /* Increased padding */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  margin: 0 auto; /* Center horizontally */
+  text-align: center;
+}
+
+/* Input and button styling */
+.search-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin: 30px 0;
+  padding: 35px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-inputs-container {
+  display: flex;
+  gap: 30px; /* Increased gap between inputs */
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.search-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.search-section label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  display: block;
+  text-align: left;
+}
+
+.search-section input,
+.search-section select {
+  padding: 14px 18px;
+  font-size: 1em;
+  border-radius: 10px;
+  border: 2px solid #eaeaea;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-section input:hover,
+.search-section select:hover {
+  border-color: #d0d0d0;
+}
+
+.search-section input:focus,
+.search-section select:focus {
+  border-color: #6644ff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 68, 255, 0.1);
+}
+
+.search-section select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 45px;
+}
+
+.search-section button {
+  background: linear-gradient(45deg, #6644ff, #764ba2);
+  border-radius: 25px;
+  padding: 15px 40px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.05em;
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: 150px;
+  margin: 10px auto 0;
+  box-shadow: 0 2px 4px rgba(102, 68, 255, 0.2);
+}
+
+.search-section button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2));
+  transition: transform 0.6s;
+  transform: translateX(-100%);
+}
+
+.search-section button:hover::before {
+  transform: translateX(100%);
+}
+
+.search-section button:hover {
+  background-color: #5533ee;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 68, 255, 0.3);
+}
+
+.search-section button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(102, 68, 255, 0.2);
+}
+
+/* Meal information styling */
+#mealList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Changed to 4 columns */
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.meal-item {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.meal-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
+  transition: transform 0.6s;
+  transform: translateX(-100%);
+}
+
+.meal-item:hover::before {
+  transform: translateX(100%);
+}
+
+.meal-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.meal-item img {
+  width: 100%;
+  max-width: 200px; /* Increased max width */
+  border-radius: 4px;
+  margin-bottom: 15px; /* Adjusted margin for spacing */
+}
+
+.meal-item h3 {
+  font-size: 1.5em; /* Increased font size */
+  color: #333;
+  margin: 0;
+}
+
+/* Modal styling */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 8px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Meal details */
+#mealInfo {
+  margin-top: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#mealInfo h2 {
+  font-size: 2em;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+#mealInfo p {
+  font-size: 1em;
+  color: #666;
+}
+
+#mealInfo img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+#mealInfo h3 {
+  font-size: 1.5em;
+  color: #333;
+  margin-top: 20px;
+}
+
+#mealInfo ul {
+  list-style: none;
+  padding: 0;
+}
+
+#mealInfo ul li {
+  background-color: #f1f1f1;
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 0.95em;
+  color: #333;
+}
+
+#mealInfo a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#mealInfo a:hover {
+  color: #0056b3;
+}
+
+#mealInfo button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1em;
+}
+
+#mealInfo button:hover {
+  background-color: #0056b3;
+}
+
+/* CRUD */
+/* Planner and Grocery List Section */
+.planner-section, .grocery-section {
+margin-top: 20px;
+background-color: rgba(255, 255, 255, 0.9);
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.planner-section form, .grocery-section form {
+display: flex;
+gap: 10px;
+justify-content: center;
+margin-bottom: 15px;
+}
+
+ul {
+list-style: none;
+padding: 0;
+}
+
+ul li {
+color: white;
+background-color: #6644ff;
+padding: 10px;
+border-radius: 4px;
+margin-bottom: 5px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+button.delete-btn {
+background-color: #fa3726;
+color: white;
+border: none;
+padding: 5px 10px;
+border-radius: 4px;
+cursor: pointer;
+}
+
+button.delete-btn:hover {
+background-color: #fa3726;
+}
+
+
+/* navigation bar */
+.navbar {
+    display: flex;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 1.5em;
+    color: #ffffff; /* Gold color */
+  }
+
+  .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+  }
+  
+  .nav-links li {
+      margin-left: 20px;
+      border-radius: 10px;
+  }
+  
+  .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 1em;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 8px 15px;
+  }
+  
+  .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #22ff47;
+      transition: width 0.3s ease;
+  }
+  
+  .nav-links a:hover::after {
+      width: 100%;
+  }
+  
+  .nav-links a.active {
+      color: #22ff47; /* Gold color for active link */
+  }
+
+/* Add these styles to your existing CSS */
+#recipeForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#recipeIngredients {
+  min-height: 100px;
+  padding: 8px;
+}
+
+#recipeName {
+  padding: 8px;
+}
+
+.grocery-section {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.grocery-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.grocery-section input {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grocery-section input:focus {
+    border-color: rgb(166, 181, 250);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(166, 181, 250, 0.2);
+}
+
+.ingredient-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.remove-ingredient {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-ingredient:hover {
+    background-color: #dc3545;
+}
+
+.grocery-section button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.grocery-section button[type="button"] {
+    background-color: #6644ff;
+    color: white;
+}
+
+.grocery-section button[type="button"]:hover {
+    background-color: #5533ee;
+    transform: translateY(-2px);
+}
+
+.grocery-section button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    margin-top: 10px;
+}
+
+.grocery-section button[type="submit"]:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Update grocery list styling */
+#groceryList {
+    margin-top: 20px;
+}
+
+#groceryList li {
+    background-color: #6644ff;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+#groceryList li:hover {
+    transform: translateX(5px);
+}
+
+.delete-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.mainWrapper {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.btn {
+  padding: 8px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+#btnRead {
+  background-color: #2196F3;
+}
+
+#btnRead:hover {
+  background-color: #1976D2;
+}
+
+#btnDelete {
+  background-color: #f44336;
+}
+
+#btnDelete:hover {
+  background-color: #d32f2f;
+}
+
+/* Recipe display styling */
+.recipes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: lavender;
+}
+
+.recipe-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 15px;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+}
+
+.recipe-card h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.recipe-card h4 {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.recipe-ingredients ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recipe-ingredients li {
+  background-color: #f5f5f5;
+  margin: 5px 0;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #333;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.back-link:hover {
+  color: #22ff47;
+  text-decoration: none;
+}
+
+/* Recipe card actions */
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.recipe-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-edit,
+.btn-delete,
+.btn-save,
+.btn-cancel,
+.btn-add,
+.btn-remove {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-edit {
+  background-color: #ffd700;
+}
+
+.btn-delete {
+  background-color: #ff4444;
+  color: white;
+}
+
+.btn-save {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.btn-cancel {
+  background-color: #777;
+  color: white;
+}
+
+.btn-add {
+  background-color: #4CAF50;
+  color: white;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.btn-remove {
+  background-color: #ff4444;
+  color: white;
+}
+
+/* Edit mode styling */
+.edit-mode {
+  background-color: #f8f9fa;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ingredient-input {
+  display: flex;
+  gap: 8px;
+}
+
+.ingredient-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+/* Add these styles for the search box */
+.recipe-search {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-search input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.recipe-search input:focus {
+  border-color: rgb(166, 181, 250);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(166, 181, 250, 0.2);
+}
+
+.no-results {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+}
+
+/* Loading animation */
+.loading {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Enhanced input fields */
+.search-section input,
+.search-section select {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.search-section input:focus,
+.search-section select:focus {
+  border-color: #6644ff;
+  box-shadow: 0 0 0 4px rgba(102, 68, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Updated Grocery List Container */
+.ingredient {
+  max-width: 600px;
+  background: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ingredient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #6644ff, #764ba2);
+}
+
+/* Updated Grocery Section */
+.grocery-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* Stylish Form */
+#groceryForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#groceryForm input {
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+  background: #f9fafb;
+}
+
+#groceryForm input:focus {
+  border-color: #6644ff;
+  box-shadow: 0 0 0 3px rgba(102, 68, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Ingredient Row Styling */
+.ingredient-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  position: relative;
+}
+
+.remove-ingredient {
+  background: #ff4444;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.remove-ingredient:hover {
+  transform: rotate(90deg);
+  background: #dc3545;
+}
+
+/* Action Buttons */
+.grocery-section button[type="button"],
+.grocery-section button[type="submit"] {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+}
+
+.grocery-section button[type="button"] {
+  background: linear-gradient(135deg, #6644ff 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.grocery-section button[type="button"]::before {
+  font-size: 1.2em;
+}
+
+.grocery-section button[type="submit"] {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+}
+
+/* Grocery List Styling */
+#groceryList {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#groceryList li {
+  background: linear-gradient(135deg, #6644ff 0%, #764ba2 100%);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform-origin: left;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#groceryList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#groceryList li:hover {
+  transform: translateX(5px) scale(1.02);
+  box-shadow: 0 5px 15px rgba(102, 68, 255, 0.2);
+}
+
+.delete-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* Section Headers */
+.ingredient h2 {
+  color: #1f2937;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.ingredient h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #6644ff, #764ba2);
+  border-radius: 2px;
+}
+
+/* Remove the dashed line and replace with a modern separator */
+.ingredient h3 {
+  display: none;
+}
+
+/* Add a modern separator */
+.separator {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(102, 68, 255, 0.2), transparent);
+  margin: 20px 0;
+}
